@@ -1,0 +1,5 @@
+@import "./box.scss";
+
+.building {
+	@include box;
+}

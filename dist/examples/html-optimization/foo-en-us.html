@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>hello</title>
+<script type="text/javascript" src="../../lib/yom-require/require.js"></script>
+<!-- trace:src/examples/compile-less/main.less -->
+<style type="text/css">
+.box {
+  width: 200px;
+  height: 200px;
+}
+.building {
+  width: 200px;
+  height: 200px;
+}
+
+</style>
+<!-- trace:src/examples/compile-sass/main.scss -->
+<style type="text/css">
+.building {
+  width: 200px;
+  height: 200px; }
+
+</style>
+</head>
+<body>
+<!-- trace:src/examples/html-optimization/foo.src.html -->
+<!-- trace:src/examples/html-optimization/foo.inc.html -->
+<div id="foo-div"></div>
+<!-- trace:src/examples/html-optimization/bar.inc.html -->
+<div id="bar-div"></div>
+
+<!-- trace:src/lang/en-us/foo.js -->
+<script type="text/javascript">
+/* trace:src/lang/en-us/foo.js */
+define('lang/en-us/foo', ['require', 'exports', 'module'], {
+	label: {
+		foo: 'hello'
+	}
+});
+require.processDefQueue();
+</script>
+
+<!-- trace:src/examples/html-optimization/foo.coffee -->
+<script type="text/javascript">
+/* trace:src/examples/html-optimization/foo.coffee */
+define('examples/html-optimization/foo', ['require', 'exports', 'module', 'jquery', './foo.tpl.html'], function(require, exports, module) {
+(function() {
+  var $, foo;
+
+  $ = require('jquery');
+
+  foo = {};
+
+  foo.bar = function() {
+    var data, tpl;
+    tpl = require('./foo.tpl.html');
+    data = [
+      {
+        name: 'foo'
+      }, {
+        name: 'bar'
+      }
+    ];
+    return $('#bar-div').html(tpl.render(data));
+  };
+
+  module.exports = foo;
+
+}).call(this);
+
+});
+
+/* trace:src/examples/html-optimization/foo.tpl.html */
+define('examples/html-optimization/foo.tpl.html', ['require', 'exports', 'module', "jquery"], function(require, exports, module) {
+    function $encodeHtml(str) {
+        return (str + "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/`/g, "&#96;").replace(/'/g, "&#39;").replace(/"/g, "&quot;");
+    }
+    exports.render = function($data, $opt) {
+        $data = $data || {};
+        var _$out_ = [];
+        var $print = function(str) {
+            _$out_.push(str);
+        };
+        with ($data) {
+            /* trace:src/examples/html-optimization/foo.tpl.html */
+            var $ = require("jquery");
+            $.each(items, function(i, item) {
+                _$out_.push("<li>", item.name, "</li>");
+            });
+        }
+        return _$out_.join("");
+    };
+});
+require.processDefQueue();
+</script>
+
+<script type="text/javascript">
+require(['html-optimization/foo'], function(foo) {
+	foo.bar();
+}, function() {
+	alert('load error');
+});
+</script>
+</body>
+</html>

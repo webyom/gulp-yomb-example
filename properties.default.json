@@ -1,0 +1,13 @@
+{
+	"isPrototype": "false",
+	
+	"domain": "'sample.com'",
+	"origin": "location.protocol + '//' + location.host",
+	"cgiOrigin": "'//app.sample.com'",
+	"cdnOrigin": "'//image.sample.com'",
+
+	"pageAside": "3",
+	"itemsPerPage": "15",
+	"oneScreenRecords": "10",
+	"mandatory": "<span style=color:red;>*</span>"
+}

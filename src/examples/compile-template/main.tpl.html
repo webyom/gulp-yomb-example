@@ -1,0 +1,14 @@
+<%
+var $ = require('jquery');
+var itemsTpl = require('./items.tpl.html');
+%>
+
+<!-- include "../compile-less/main.less" -->
+<!-- include "../compile-sass/main.scss" -->
+
+<ul>
+	<%=itemsTpl.render($data)%>
+</ul>
+<ul>
+	<!-- include "./mixin.tpl.html" -->
+</ul>

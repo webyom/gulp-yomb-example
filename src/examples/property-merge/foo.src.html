@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="%{{_lang_}}%">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>${{foo.label.foo}}$</title>
+<script type="text/javascript" src="../../lib/yom-require/require.js"></script>
+<script type="text/javascript">
+var G = G || {
+	LANG: '%{{_lang_}}%',
+	
+	DOMAIN: %{{domain}}%,
+	ORIGIN: %{{origin}}%,
+	CGI_ORIGIN: %{{cgiOrigin}}%,
+	CDN_ORIGIN: %{{cdnOrigin}}%,
+
+	//pager setting
+	PAGE_ASIDE: %{{pageAside}}%,
+	ITEMS_PER_PAGE: %{{itemsPerPage}}%,
+	ONE_SCREEN_RECORDS: %{{oneScreenRecords}}%,
+
+	IS_PROTOTYPE: %{{isPrototype}}%
+};
+</script>
+</head>
+<body>
+</body>
+</html>
