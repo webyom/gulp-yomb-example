@@ -1,0 +1,1 @@
+define(["require","exports","module","jquery"],function(e,r,n){(function(){var r,o;r=e("jquery"),o={},o.bar=function(){return alert("Hello world!")},n.exports=o}).call(this)});

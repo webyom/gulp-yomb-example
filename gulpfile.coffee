@@ -20,6 +20,8 @@ DEST_BASES =
 	prototype: 'prototype'
 
 destBase = DEST_BASES[BUILD_TARGET] || DEST_BASES.default
+if argv.minify
+	destBase = destBase + '-min'
 properties = require "./properties.#{BUILD_TARGET}"
 
 if argv.properties
