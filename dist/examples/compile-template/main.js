@@ -42,9 +42,9 @@ define('./main.tpl.html', ['require', 'exports', 'module', "jquery", "./items.tp
             var $ = require("jquery");
             var itemsTpl = require("./items.tpl.html");
             /* trace:src/examples/compile-less/main.less */
-            _$out_.push('<style type="text/css">.box { width: 200px; height: 200px;}.building { width: 200px; height: 200px;}</style>');
+            _$out_.push('<style type="text/css">/* trace:src/examples/compile-less/main.less *//* trace:src/examples/compile-less/box.less */.box { width: 200px; height: 200px;}.building { width: 200px; height: 200px;}</style>');
             /* trace:src/examples/compile-sass/main.scss */
-            _$out_.push('<style type="text/css">.building { width: 200px; height: 200px; }</style><ul>', itemsTpl.render($data), "</ul><ul>");
+            _$out_.push('<style type="text/css">/* trace:src/examples/compile-sass/main.scss *//* trace:src/examples/compile-sass/box.scss */.building { width: 200px; height: 200px; }</style><ul>', itemsTpl.render($data), "</ul><ul>");
             (function() {
                 with ($data) {
                     /* trace:src/examples/compile-template/mixin.tpl.html */

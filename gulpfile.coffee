@@ -123,6 +123,17 @@ gulp.task 'fix-less-trace', ->
 			next()
 		.pipe gulp.dest('src')
 
+gulp.task 'fix-sass-trace', ->
+	path = require 'path'
+	gulp.src('src/**/*.scss')
+		.pipe through.obj (file, enc, next) ->
+			content = file.contents.toString().replace(/^\/\*\s*trace:[^*]+\*\/(\r\n|\n)*/, '')
+			trace = '/* trace:' + path.relative(file.cwd, file.path) + ' */'
+			file.contents = new Buffer trace + '\n' + content
+			@push file
+			next()
+		.pipe gulp.dest('src')
+
 gulp.task 'release', ->
 	path = require 'path'
 	rimraf = require 'rimraf'
